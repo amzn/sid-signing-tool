@@ -1,0 +1,54 @@
+{
+    "ED25": {
+        "AMZN": {
+            "priv": "6c1be1009b6930dcbdbf433fde911dbfd74c20bbad030d440a22a2fba93e15d0",
+            "pub": "6da87cc6db413ba68b91d26658cb0e39fc18a3e8ff9ed018ff324be3592c48ae",
+            "serial": "4a58b711",
+            "signature": "2db1a1e8641b76d28e8412eab34d52eaeb162f7e64c0a17c7a6c24965acc55c9efe2bdef215e6b31878a0dcc510e17fc522c83aaedb3371bb4e7ba9f3b839309"
+        },
+        "MAN": {
+            "priv": "4bce70c88a87cfd3e885d9e5aa58f9405445b8a981b7d5c6109276aaecc0ba81",
+            "pub": "56e15ca5b896a82964e540981a9f0bee341700ada27d7b7d98afff850c869cd1",
+            "serial": "3c344c41",
+            "signature": "06b319e3653ae6fcf93166d11a686049e2c0109471da63ddef863d1f5a8cdba268c7cd69b91fb4c6529ba6cf1aa1ff7dc41709b77dc6786bb07cadbf5603cc02"
+        },
+        "MODEL": {
+            "priv": "6286e68c081184ccddee34b2efb70673032b8ee9dc7f2d9480eaab630f6495c4",
+            "pub": "b74e25419181051faf9c35a09f7fb31f7ee7f4fc574de3c6efe499d2c334b689",
+            "serial": "7bd5d47e",
+            "signature": "7d8a2b034e9db4ed32debd5018bf022f5101b4c2941d326fe536d97df781e34fda26516c3abe7a0de448de7961b350af62327d9fbb437880a2b876cc46bd6300"
+        },
+        "DEVICE": {
+            "priv": "ca7b250f29b9cf0ce2fc05fba1278564e29a8a0352ee1bd8296b9c5f09d80c4c",
+            "pub": "979ff170377f2c778d311c71419af3808b213b5dc7939042170c63c5c76cf46c",
+            "serial": "1bcccea696762e6116c6e9c92d99bf358c2e0718822ce47ca8c74107e66cb0e4",
+            "signature": "d3eb4337df44d9d7543bcc3ef4772df9258497b1c9c8657ad08be4191655460b9717af20455c37f5ec90e82844f5811539f196774036761bba0e00f51e343d03"
+        }
+    },
+    "P256R1": {
+        "AMZN": {
+            "priv": "828ff649626a6c224d23413e422d9d071c1adb9bb1f70dde1760a529659d0d0b",
+            "pub": "17b9a04c9fef3a7dc2f432b56d53f2a2d6296afffb3a6a669bd25d064398de0410e541cfc9995f9e7888faa2c1491eac36b60aff23f1d0c9a867edac993eed2b",
+            "serial": "86d2c96e",
+            "signature": "d3836ce76f297b9d81f466a65733dcdbddfc76c001da3badbadf8e687e549d1df7f88ca47cdf93c2fef3feff46330b43575aa2d96ee8a7c7f2bb2346a698eac9"
+        },
+        "MAN": {
+            "priv": "85ee2dfd7045749df11e8033891b528505ab4ce5e20d49adec48d5e1b2fcf910",
+            "pub": "3be694b4d2c3f04d2fcf1a5baa84fee247806a85640a394386b2fe270f92ddc43afaced331b3fe5b461843dec9cfe6ebf7b36c642e830bca7ddab133cae49ef3",
+            "serial": "581a2232",
+            "signature": "ed3a691ca4efc438d694ccdd300cd39ec3e5dc930e307e2b41551a9e7135bfc2f31046f3e86b263855257e21fc591352f99c41ec9dd63995a46d3badf3c13fe7"
+        },
+        "MODEL": {
+            "priv": "ee3f0f0063150f2419dbff297c8041a7086867599e248eae8606f38515817389",
+            "pub": "8811f27da06d5dc3d5faba4b3d8efb08bcd4bfcff976a8f565b1727637be137dc5c52454e93568264b367ac8a448a87b3f07a7262c88e8ce5593b29bbab059ad",
+            "serial": "433d2e44",
+            "signature": "843ee6e5c48423492a02ec106b2bc1e766dff2a65a606ab4357f1d378633facb9d3ade97405ed34df99820f9c83d7a9ca50b8422dd3daab40593c1f9e7322bd1"
+        },
+        "DEVICE": {
+            "priv": "b6477660c98215aeb6f847272f7cacdc590fa088b3a5c20a8d7d89bc2cf9bf6a",
+            "pub": "16e7cf752d887dba1cc3b13e46c1a77cc88bcd338b7ca64364e8ac3a32e605e6ee2b58ceafbf2e4bb32bce497054a83264190c35d01fe28522b6bd98f2601cdd",
+            "serial": "a242fdf11f8f2b1a39f3c3e693114351dcbed407e3e6b605b99e8306dda748a6",
+            "signature": "78c286811e94f25bc3a93aaf85619f51d9169e19fceafc903f4473e8f0daf3d9d2269c5ec1c71f58c6736689c30b6a6af6f3e71547154ba36749b41efda741d0"
+        }
+    }
+}

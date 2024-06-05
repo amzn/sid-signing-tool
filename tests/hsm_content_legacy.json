@@ -1,0 +1,372 @@
+{
+    "0x0001-OBJECT.AUTHENTICATION_KEY": {
+        "id": 1,
+        "type": 2,
+        "info": [
+            18446744073709551615,
+            1,
+            40,
+            65535,
+            2,
+            38,
+            0,
+            2,
+            "DEFAULT AUTHKEY CHANGE THIS ASAP",
+            18446744073709551615
+        ]
+    },
+    "0x0005-OBJECT.AUTHENTICATION_KEY": {
+        "id": 5,
+        "type": 2,
+        "info": [
+            385,
+            5,
+            40,
+            5,
+            2,
+            38,
+            0,
+            2,
+            "SIDEWALK",
+            0
+        ]
+    },
+    "0x0011-OBJECT.OPAQUE": {
+        "id": 17,
+        "type": 1,
+        "info": [
+            0,
+            17,
+            32,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_AMZN_ED25.pub",
+            0
+        ],
+        "content": "6da87cc6db413ba68b91d26658cb0e39fc18a3e8ff9ed018ff324be3592c48ae"
+    },
+    "0x0012-OBJECT.OPAQUE": {
+        "id": 18,
+        "type": 1,
+        "info": [
+            0,
+            18,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_AMZN_ED25.signature",
+            0
+        ],
+        "content": "2db1a1e8641b76d28e8412eab34d52eaeb162f7e64c0a17c7a6c24965acc55c9efe2bdef215e6b31878a0dcc510e17fc522c83aaedb3371bb4e7ba9f3b839309"
+    },
+    "0x0013-OBJECT.OPAQUE": {
+        "id": 19,
+        "type": 1,
+        "info": [
+            0,
+            19,
+            4,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_AMZN_ED25.serial",
+            0
+        ],
+        "content": "4a58b711"
+    },
+    "0x0019-OBJECT.OPAQUE": {
+        "id": 25,
+        "type": 1,
+        "info": [
+            0,
+            25,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_AMZN_P256R1.pub",
+            0
+        ],
+        "content": "17b9a04c9fef3a7dc2f432b56d53f2a2d6296afffb3a6a669bd25d064398de0410e541cfc9995f9e7888faa2c1491eac36b60aff23f1d0c9a867edac993eed2b"
+    },
+    "0x001a-OBJECT.OPAQUE": {
+        "id": 26,
+        "type": 1,
+        "info": [
+            0,
+            26,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_AMZN_P256R1.signature",
+            0
+        ],
+        "content": "d3836ce76f297b9d81f466a65733dcdbddfc76c001da3badbadf8e687e549d1df7f88ca47cdf93c2fef3feff46330b43575aa2d96ee8a7c7f2bb2346a698eac9"
+    },
+    "0x001b-OBJECT.OPAQUE": {
+        "id": 27,
+        "type": 1,
+        "info": [
+            0,
+            27,
+            4,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_AMZN_P256R1.serial",
+            0
+        ],
+        "content": "86d2c96e"
+    },
+    "0x0021-OBJECT.OPAQUE": {
+        "id": 33,
+        "type": 1,
+        "info": [
+            0,
+            33,
+            32,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MAN_ED25.pub",
+            0
+        ],
+        "content": "56e15ca5b896a82964e540981a9f0bee341700ada27d7b7d98afff850c869cd1"
+    },
+    "0x0022-OBJECT.OPAQUE": {
+        "id": 34,
+        "type": 1,
+        "info": [
+            0,
+            34,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MAN_ED25.signature",
+            0
+        ],
+        "content": "06b319e3653ae6fcf93166d11a686049e2c0109471da63ddef863d1f5a8cdba268c7cd69b91fb4c6529ba6cf1aa1ff7dc41709b77dc6786bb07cadbf5603cc02"
+    },
+    "0x0023-OBJECT.OPAQUE": {
+        "id": 35,
+        "type": 1,
+        "info": [
+            0,
+            35,
+            4,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MAN_ED25.serial",
+            0
+        ],
+        "content": "3c344c41"
+    },
+    "0x0029-OBJECT.OPAQUE": {
+        "id": 41,
+        "type": 1,
+        "info": [
+            0,
+            41,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MAN_P256R1.pub",
+            0
+        ],
+        "content": "3be694b4d2c3f04d2fcf1a5baa84fee247806a85640a394386b2fe270f92ddc43afaced331b3fe5b461843dec9cfe6ebf7b36c642e830bca7ddab133cae49ef3"
+    },
+    "0x002a-OBJECT.OPAQUE": {
+        "id": 42,
+        "type": 1,
+        "info": [
+            0,
+            42,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MAN_P256R1.signature",
+            0
+        ],
+        "content": "ed3a691ca4efc438d694ccdd300cd39ec3e5dc930e307e2b41551a9e7135bfc2f31046f3e86b263855257e21fc591352f99c41ec9dd63995a46d3badf3c13fe7"
+    },
+    "0x002b-OBJECT.OPAQUE": {
+        "id": 43,
+        "type": 1,
+        "info": [
+            0,
+            43,
+            4,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MAN_P256R1.serial",
+            0
+        ],
+        "content": "581a2232"
+    },
+    "0x0030-OBJECT.ASYMMETRIC_KEY": {
+        "id": 48,
+        "type": 3,
+        "info": [
+            384,
+            48,
+            96,
+            5,
+            3,
+            46,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_ED25.priv",
+            0
+        ]
+    },
+    "0x0031-OBJECT.OPAQUE": {
+        "id": 49,
+        "type": 1,
+        "info": [
+            0,
+            49,
+            32,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_ED25.pub",
+            0
+        ],
+        "content": "b74e25419181051faf9c35a09f7fb31f7ee7f4fc574de3c6efe499d2c334b689"
+    },
+    "0x0032-OBJECT.OPAQUE": {
+        "id": 50,
+        "type": 1,
+        "info": [
+            0,
+            50,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_ED25.signature",
+            0
+        ],
+        "content": "7d8a2b034e9db4ed32debd5018bf022f5101b4c2941d326fe536d97df781e34fda26516c3abe7a0de448de7961b350af62327d9fbb437880a2b876cc46bd6300"
+    },
+    "0x0033-OBJECT.OPAQUE": {
+        "id": 51,
+        "type": 1,
+        "info": [
+            0,
+            51,
+            4,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_ED25.serial",
+            0
+        ],
+        "content": "7bd5d47e"
+    },
+    "0x0038-OBJECT.ASYMMETRIC_KEY": {
+        "id": 56,
+        "type": 3,
+        "info": [
+            384,
+            56,
+            96,
+            5,
+            3,
+            46,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_P256R1.priv",
+            0
+        ]
+    },
+    "0x0039-OBJECT.OPAQUE": {
+        "id": 57,
+        "type": 1,
+        "info": [
+            0,
+            57,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_P256R1.pub",
+            0
+        ],
+        "content": "8811f27da06d5dc3d5faba4b3d8efb08bcd4bfcff976a8f565b1727637be137dc5c52454e93568264b367ac8a448a87b3f07a7262c88e8ce5593b29bbab059ad"
+    },
+    "0x003a-OBJECT.OPAQUE": {
+        "id": 58,
+        "type": 1,
+        "info": [
+            0,
+            58,
+            64,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_P256R1.signature",
+            0
+        ],
+        "content": "843ee6e5c48423492a02ec106b2bc1e766dff2a65a606ab4357f1d378633facb9d3ade97405ed34df99820f9c83d7a9ca50b8422dd3daab40593c1f9e7322bd1"
+    },
+    "0x003b-OBJECT.OPAQUE": {
+        "id": 59,
+        "type": 1,
+        "info": [
+            0,
+            59,
+            4,
+            5,
+            1,
+            30,
+            0,
+            2,
+            "RNET_MODEL_DUMMY_P256R1.serial",
+            0
+        ],
+        "content": "433d2e44"
+    }
+}

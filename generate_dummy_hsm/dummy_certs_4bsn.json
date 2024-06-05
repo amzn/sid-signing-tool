@@ -1,0 +1,78 @@
+{
+    "ED25": {
+        "AMZN": {
+            "priv": "d462a0773d0fb71d38e19881038b2a13299b054fb77608b5f22c0c6db1b72871",
+            "pub": "082cf818b4c330cdbf7ced6664a9ac9b6c41ef04bc12c6d7fbca8b1abd566ff0",
+            "serial": "4a58b711",
+            "signature": "fa9b3ff5ae7eb96ada29853d6c62933d1b36af5fd23fca2fd7a9754eebc1db24b7ea58db39956e3d977e1c96a957a3ae0192ff8256b9536d48c3d22cd1a1b00c"
+        },
+        "SIDEWALK": {
+            "priv": "86afb82d2ba4b40337ac8f62a25d9488f2d638eb0bbdbf69af7f95c6b6acf8a8",
+            "pub": "3819627e93ec3117825f8a038c1e90f42d34f778219570801cdb9ba32b47998f",
+            "serial": "3c344c41",
+            "signature": "091b14e24e1be8c1e6e28a6fc960892cf72dba4380c423ee36f5afb708559659cf26fa8d68ee4c10c5cb004ad2a982917c462e90b05f08dea195b0f486eee60b"
+        },
+        "MAN": {
+            "priv": "c2e48b1e29a7b246ecbcdafc02e56388b6749eeaf560925a96e52b8679d21880",
+            "pub": "5904ad5a4bb08ee7bd4eb0fa24990e7e39f8ac9a2c09ce86a082469ddc916b84",
+            "serial": "7bd5d47e",
+            "signature": "d75d49ee1f5a569bca10777aa71dc5140d6e996ba7ccdff396d6f929ad6a611a250d556180b0eaa35eaeb10bab80342677b3bb62da5139ee7cabb95fe1b30a0d"
+        },
+        "PROD": {
+            "priv": "fb9b12c895b884a2c6710d31b33c96d5c7b6f52752dd1e27dd22ee7e32baccd0",
+            "pub": "e3793142dcfcc6117ba91f9feeeb0cb874586c75bcaf8aa4a65c8e469589699b",
+            "serial": "6110e578",
+            "signature": "8db0d77e1002dc2b5608426ead3a14e9139432ff6c2711861dc29f960a97458ac5cba098d26bb6b7793345dc58f49c3104e1ba794d6eae1667d877bf3139980e"
+        },
+        "DAK": {
+            "priv": "12bcfd13da6c4f6105b31b15ccd99bf0133c0e8c48a16341aef4453731c2c811",
+            "pub": "d25ee211ef742c355ade72d0429ebefca73cfd55240c65384c763eac2dec6e03",
+            "serial": "16c6e949",
+            "signature": "e3f31567ac745e2a880daa75a8cf348b817199195ae78594b1e123d4806462801ade94025e6336de1288692da0d7339b35e93051e2502fc9bd017a9e6618c40c"
+        },
+        "DEVICE": {
+            "priv": "1262d1871335008982681266044c778098f511d3a3e7b344b436da0a2c8b8b38",
+            "pub": "aade1906ea89d3dc1def178602f54b6651e2a868e88e711db1bd8529f96c9ab3",
+            "serial": "822ce47ca8c74107e66cb0e4b2b3f4d58d82ca6386d2c96e760e819b85c924c3",
+            "signature": "b1ac3acd50402fe7f75e68881fa10366a756de999bad0989f8d3ec3767ba6f340c31b6d673ab4f9ceec780b0747618bf24282e6336d203cf352439b76483ac0a"
+        }
+    },
+    "P256R1": {
+        "AMZN": {
+            "priv": "98f405606786538ee0e1ff78d666643f58347cfd5e38c815371744c1a96c6795",
+            "pub": "3afc5b7bf7d76de160da991d37e06c3bf85a9a6dbfe53384e60d88659888c60485eb5c91693069d2b83aa40a94bfefc12072c4c1bd89553de6566e768d4f8ac2",
+            "serial": "581a2232",
+            "signature": "86f10c7257ab140fd4656e76f218796ab02e99bcea0f6b4b9b968ff11c73385e00ba9f4f2f3030abfd05530aaab8d2db4fb5f2160bd2414aaecdfc6451ade180"
+        },
+        "SIDEWALK": {
+            "priv": "392de39a5e8939fd3adfe7ab2e2c4feb8ab6b52cd253bb4371c0fd9a376a0fab",
+            "pub": "e4252b9d7ac288f43e43703d2045f5fec66077d28a8950f31b95bc45be2cd8386b1bae0e20230040d0fe264cb71bf24f930afe82aa014e71f6b0b9d9e5d0dd86",
+            "serial": "433d2e44",
+            "signature": "dcd683bd96b224a6c28489dfca34ca74117dd089eaa466683cc4347384c4f539d9f4e15a1f9e6b57bfb7b969ad8146a03e7ab521f80b134634b823523cfad747"
+        },
+        "MAN": {
+            "priv": "6f0020a6e63e4ad5ffc2d3e66fbcdb6cc6248275586017b20a4d5753d0e5d8f6",
+            "pub": "76dc072b8cfd0f42a795cce10407a57399ed961cbf090d2512b766d7bb1f8ca46d0adffa6ea47bb573d258b819780cc028baefdb95ff786cf423033d190709cc",
+            "serial": "c1d45517",
+            "signature": "42f990577649eafa1c08c39e4f9ff9f0c99e11a069bac94974e17114052706d5d83b02cc80e4d47c10d08718a3b28d79c8b81fc56cecf83ac17f1946055436dd"
+        },
+        "PROD": {
+            "priv": "50aacf05ab74cf2ac8efe55aeb3d82ad9b6739baaf5c967f4468a3366d143f8d",
+            "pub": "1856d477b05ba6fe71a738953a360e1045dbb78d630e93e3fc9364183f449cb604bf67c3c378e435c02c5c241f328efdc7db9918fa974de68197142b3d878ec6",
+            "serial": "39f3c366",
+            "signature": "855fb897dce5adfd05aa2060e606c0d682759a99d499ae53db1fdfb334d74129bdb80edb750dfcd9715c89823c8db5bcaca65875ba87729b97db285ac37d3759"
+        },
+        "DAK": {
+            "priv": "bba824d28f81df6a6e3307b494d9c9b5fc1c4c128c034ed16ce0e76b8da1c519",
+            "pub": "14a8e06db9aa621e25246e3ab01604858be6660221ded9b57d8725bf642f761a1cfa7dd84a5bf611b084caa62ab52788c6eb6dd7767d0ab5856f9a18f44348a4",
+            "serial": "dcbed407",
+            "signature": "33394c7c1f6fc619ed2f7687e5175a7838452f885bc7f9c2b938b36d667ffc600fa8ad434fb5bf8e42ce028851e1c75b40b0c991fca7da1bb07f76a53ef0f49f"
+        },
+        "DEVICE": {
+            "priv": "d245418637d3587a38bec99ab5400f0d09029a6c531febcd83a52253b718d906",
+            "pub": "ff0e8fa673ea0eb381e149120b8692d69dc45aa51260326cb0d5da27ea4fab47fb3cb9bb7212e38ed2e8f1abdf160c08b83c66db5fa9a2372d57e48e2edec922",
+            "serial": "dda748a61e029a8a3f415b024a146cf0d98a98e1cf999661f967bdafdf0e7337",
+            "signature": "aba2f047b941fa34ce1c2e3320544a24ebd18c8f27b67cec890181c96fbdd970dde02772b4f13e6f0bca2861cbb4585ec861919e3ec849331d9c8d962d86bf13"
+        }
+    }
+}
