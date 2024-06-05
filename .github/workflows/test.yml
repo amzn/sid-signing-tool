@@ -5,9 +5,6 @@ name: Tests
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev-action-ci
   pull_request:
 
 permissions:
