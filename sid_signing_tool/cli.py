@@ -29,7 +29,7 @@ import ssl
 from urllib3.poolmanager import PoolManager
 from requests.adapters import HTTPAdapter
 
-__version__ = "1.1.8"
+__version__ = "1.1.9"
 
 SMSN_LEN = 32
 ED25519_PUBK_LEN = 32

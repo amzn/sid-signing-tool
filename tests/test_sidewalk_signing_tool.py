@@ -13,9 +13,9 @@ from yubihsm.core import AuthSession
 from yubihsm.objects import ObjectInfo
 from cryptography.exceptions import InvalidSignature
 
-import sidewalk_signing_tool
-from sidewalk_signing_tool import CA_TYPE, STAGE, CURVE, SidewalkCert
-from sidewalk_signing_tool import SidewalkCert, SidewalkCertChain, SidewalkCertsOnHsm
+import sid_signing_tool.cli as sidewalk_signing_tool
+from sid_signing_tool.cli import CA_TYPE, STAGE, CURVE, SidewalkCert
+from sid_signing_tool.cli import SidewalkCert, SidewalkCertChain, SidewalkCertsOnHsm
 
 TEST_PRODUCT = 'RNET_DAK_DUMMY'
 TEST_PRODUCT_LEGACY = 'RNET_MODEL_DUMMY'
