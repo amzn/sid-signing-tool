@@ -3,7 +3,7 @@
 
 import sys
 import base64
-from sidewalk_signing_tool import CURVE, SidewalkCertChain
+from sid_signing_tool.cli import CURVE, SidewalkCertChain
 
 # As we have variable length of sn, there's no way to know the type of the chain
 def try_with_curves(chain):
