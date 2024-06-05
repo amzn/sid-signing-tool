@@ -365,7 +365,7 @@ class SidewalkCertsOnHsm:
 
 def generate_smsn(stage, device_type, apid, dsn):
     hasher = hashes.Hash(hashes.SHA256())
-    hasher.update((device_type + '-' + stage2str(stage) + dsn + apid + 'bad').encode('ascii'))
+    hasher.update((device_type + '-' + stage2str(stage) + dsn + apid + '').encode('ascii'))
     return hasher.finalize()
 
 
