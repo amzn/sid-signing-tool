@@ -30,4 +30,4 @@ jobs:
       run: poetry install
     - name: Test with unittest
       run: |
-        poetry run python -m unittest discover tests
+        poetry run python -m unittest discover test
