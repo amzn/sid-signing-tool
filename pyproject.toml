@@ -1,6 +1,14 @@
+[tool.black]
+line-length = 100
+
+[tool.isort]
+known_first_party = ["sid_signing_tool"]
+profile = "black"
+line_length = 100
+
 [tool.poetry]
 name = "sid-signing-tool"
-version = "1.1.10"
+version = "1.2.0"
 description = "Tool that generates Sidewalk Certificate Chain with HSM"
 authors = ["Sidewalk Team <sidewalk-provisioning@amazon.com>"]
 readme = "README.md"
@@ -11,6 +19,10 @@ cryptography = "^42.0.2"
 yubihsm = "^3.0.0"
 packaging = "^24.0"
 requests = "^2.31.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+isort = "^5.13.2"
 
 [tool.poetry.scripts]
 sid_signing_tool = "sid_signing_tool.cli:main"
