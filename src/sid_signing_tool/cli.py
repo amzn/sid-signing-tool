@@ -263,9 +263,6 @@ def main():
 
     args = arg_parser_builder().parse_args()
 
-    if args.version:
-        sys.exit("version: " + __version__)
-
     if args.verbose > 0:
         logging.basicConfig(level="DEBUG" if args.verbose >= 2 else "INFO")
 
@@ -356,7 +353,14 @@ def main():
 
     # Signing and pull out the chain
     cert_store = HsmCertStore(
-        args.connector, args.pin, stage, signer_tag=args.product, pin_slot=args.pin_slot
+        args.connector,
+        args.pin,
+        stage,
+        signer_tag=args.product,
+        pin_slot=args.pin_slot,
+        ca_cert=args.ca_cert,
+        client_cert=args.client_cert,
+        client_key=args.client_key,
     )
 
     try:
