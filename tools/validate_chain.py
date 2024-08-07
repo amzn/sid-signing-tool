@@ -1,9 +1,12 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-import sys
 import base64
-from sid_signing_tool.cli import CURVE, SidewalkCertChain
+import sys
+
+from sid_signing_tool.cert import SidewalkCertChain
+from sid_signing_tool.types import CURVE
+
 
 # As we have variable length of sn, there's no way to know the type of the chain
 def try_with_curves(chain):
@@ -36,4 +39,3 @@ try:
     print("Pass: the certificate chain of %s is valid" % sidewalk_chain[0].curve.name)
 except:
     pass
-
