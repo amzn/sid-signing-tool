@@ -14,7 +14,7 @@ authors = ["Sidewalk Team <sidewalk-provisioning@amazon.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 cryptography = ">=42.0.2,<44.0.0"
 yubihsm = "^3.0.0"
 packaging = "^24.0"
