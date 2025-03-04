@@ -100,7 +100,14 @@ class SidewalkCertChain(list):
             return (data[:len], data[len:])
 
         obj = cls()
-        for ca in reversed([ca for ca in CATYPE if ca >= CATYPE.AMZN and ca <= CATYPE.DEVICE]):
+        for ca in [
+            CATYPE.DEVICE,
+            CATYPE.DAK,
+            CATYPE.PROD,
+            CATYPE.MAN,
+            CATYPE.SIDEWALK,
+            CATYPE.AMZN,
+        ]:
             serial_len = SMSN_LEN if ca == CATYPE.DEVICE else SidewalkCert.get_serial_length(data)
             (serial, data) = split_bytes(data, serial_len)
             pubk_len = ED25519_PUBK_LEN if curve == CURVE.ED25519 else P256R1_PUBK_LEN

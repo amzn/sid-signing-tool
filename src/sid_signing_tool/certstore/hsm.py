@@ -7,6 +7,7 @@ import logging
 import os
 import ssl
 import tempfile
+from enum import IntEnum
 
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes, serialization
@@ -30,12 +31,36 @@ from yubihsm.objects import AsymmetricKey, ObjectInfo
 
 from sid_signing_tool import exceptions
 from sid_signing_tool.cert import SidewalkCert, SidewalkCertChain
-from sid_signing_tool.types import CATYPE, CURVE, ELEMENT, NAMESPACE, STAGE
+from sid_signing_tool.types import CATYPE, CURVE, ELEMENT, STAGE
 
 SIDEWALK_AUTH_KEY_INDEX = 5
 SIDEWALK_AUTH_KEY_INDEX_PREPROD = 6
 CHAIN_DEPTH_CTL_LABEL = "SW_CTL_CHAIN_DEPTH"
 HSM_INFO_LABEL = "HSM_INFO"
+
+
+class NAMESPACE(IntEnum):
+    """Each namespace can store 16 objects
+    Namespace Control has auth keys and flags
+    Namespace for cert has 4 certificates for EDDSA, EDDSA-test, ECDSA, ECDSA-test,
+    4 objects in each
+    """
+
+    CONTROL = 0x0
+    CERT_START = 0x10
+    AMAZON = 0x10
+    SIDEWALK = 0x20
+    MAN = 0x30
+    MAN_LEGACY = 0x20
+    CERT_END = 0xF0
+
+
+element_offset_in_hsm = {
+    ELEMENT.PRIV: 0,
+    ELEMENT.PUBK: 1,
+    ELEMENT.SIGNATURE: 2,
+    ELEMENT.SERIAL: 3,
+}
 
 logger = logging.getLogger(__name__)
 
@@ -203,10 +228,15 @@ class HsmCertStore:
                 raise ValueError("The tag for the DAK doesn't contain the mark 'DAK'")
 
             # To reduce number of searchs, just check the object for ELEMENT.PUBK
-            serial_index_offset = signer.id - signer.namespace - ELEMENT.PRIV + ELEMENT.PUBK
+            pubk_index_offset = (
+                signer.id
+                - signer.namespace
+                - element_offset_in_hsm[ELEMENT.PRIV]
+                + element_offset_in_hsm[ELEMENT.PUBK]
+            )
 
             for namespace in range(NAMESPACE.CERT_START, NAMESPACE.CERT_END, 0x10):
-                id = namespace + serial_index_offset
+                id = namespace + pubk_index_offset
                 logger.info("Searching in id 0x%x for %s" % (id, prod_tag))
                 prod_pubk = self.search_for_id_and_type(id, OBJECT.OPAQUE)
                 if prod_pubk and prod_pubk.info.label.startswith(prod_tag):
@@ -260,10 +290,10 @@ class HsmCertStore:
 
     def construct_id_from(self, namespace, curve, stage, element):
         index = namespace
-        index += curve << 3
-        # PRODUCTION use the top half of a curve's space while the others use the bottom half
+        index += (0 if curve == CURVE.ED25519 else 1) << 3
+        # PROD uses the top half of a curve's space while the others use the bottom half
         index += 4 if stage != STAGE.PROD else 0
-        index += element
+        index += element_offset_in_hsm[element]
         return index
 
     def sign(self, curve, data):
@@ -290,7 +320,7 @@ class HsmCertStore:
     def get_certificate(self, type, curve):
         namespace = self._namespace_def[type]
         cert_data = {}
-        for e in ELEMENT:
+        for e in element_offset_in_hsm:
             if e == ELEMENT.PRIV:
                 continue
             id = self.construct_id_from(namespace, curve, self._stage, e)
@@ -314,7 +344,7 @@ class HsmCertStore:
 
     def get_certificate_chain(self, curve):
         chain = SidewalkCertChain()
-        for cert_type, namespace in sorted(self._namespace_def.items()):
+        for cert_type, namespace in self._namespace_def.items():
             logger.debug(f"Getting cert for {cert_type!r}")
             chain.append(self.get_certificate(cert_type, curve))
         return chain
