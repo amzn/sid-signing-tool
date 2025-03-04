@@ -15,7 +15,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-cryptography = "^42.0.2"
+cryptography = ">=42.0.2,<44.0.0"
 yubihsm = "^3.0.0"
 packaging = "^24.0"
 requests = "^2.31.0"
