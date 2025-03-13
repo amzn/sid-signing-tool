@@ -1,8 +1,10 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
+import base64
 import binascii
 import logging
+from typing import Optional
 
 from cryptography.exceptions import InvalidSignature
 
@@ -62,18 +64,146 @@ def decode_csr(csr, smsn_len, curve, verify_sig=True):
     return (pubk, smsn, sig)
 
 
-def sign_csr(
-    ed25519_csr,
-    p256r1_csr,
+def sign_encoded_csr(
+    ed25519_csr: str,
+    p256r1_csr: str,
     cert_store,
-    sn_len=SMSN_LEN,
-    stage=None,
-    dsn=None,
-    apid=None,
-    device_type_id=None,
-    validate_chain=True,
-):
-    if not ed25519_csr or not p256r1_csr or not p256r1_csr:
+    sn_len: int = SMSN_LEN,
+    stage: Optional[str] = None,
+    dsn: Optional[str] = None,
+    apid: Optional[str] = None,
+    device_type_id: Optional[str] = None,
+    validate_chain: bool = True,
+) -> dict:
+    """Sign device Certificate Signing Request (CSR) with product Device Attestation Key (DAK) using encoded output from sid_diagnostics.
+
+    Args:
+        ed25519_csr (str): Base64 encoded certificate signing request for ED25519 key.
+            Must be a valid base64 encoded string containing the CSR.
+        p256r1_csr (str): Base64 encoded certificate signing request for P256R1 key.
+            Must be a valid base64 encoded string containing the CSR.
+        cert_store: Certificate store object for managing certificates.
+        sn_len (int, optional): Length of serial number.
+            Defaults to SMSN_LEN.
+        stage (str, optional): Sidewalk Stage.
+            Valid values are ['PREPRODUCTION', 'PRODUCTION']. Defaults to None.
+        dsn (str, optional): Device Serial Number.
+             Defaults to None.
+        apid (str, optional): Advertised Product ID.
+            Must be a valid identifier. Defaults to None.
+        device_type_id (str, optional): Device type identifier.
+            Defaults to None.
+        validate_chain (bool, optional): Whether to validate certificate chain.
+            Defaults to True
+
+    Returns:
+        dict: Processed certificate information containing:
+            - smsn: Hex string encoded SMSN
+            - ed25519_device_pubk: Device ED25519 public key
+            - p256r1_device_pubk: Device P256R1 public key
+            - ed25519_chain: Base64 encoded ED25519 certificate chain
+            - p256r1_chain: Base64 encoded P256R1 certificate chain
+
+    Raises:
+        InvalidEddsaCSR: If ed25519 csr validation fails
+        InvalidEcdsaCSR: If p256r1 csr validation fails
+        ValueError: If base64 decoding fails
+
+    Examples:
+        >>> ed_csr = "MIIBgjCCASmgAwIBAgIJAL..."  # base64 encoded CSR
+        >>> result = sign_encoded_csr(
+        ...     ed25519_csr=ed_csr,
+        ...     p256r1_csr=p256_csr,
+        ...     cert_store=store,
+        ... )
+    """
+    try:
+        decoded_ed25519_csr = base64.standard_b64decode(ed25519_csr)
+        decoded_p256r1_csr = base64.standard_b64decode(p256r1_csr)
+    except binascii.Error:
+        raise ValueError("Invalid base64 encoding")
+
+    result = sign_csr(
+        ed25519_csr=decoded_ed25519_csr,
+        p256r1_csr=decoded_p256r1_csr,
+        cert_store=cert_store,
+        sn_len=sn_len,
+        stage=stage,
+        dsn=dsn,
+        apid=apid,
+        device_type_id=device_type_id,
+        validate_chain=validate_chain,
+    )
+
+    encoded_result = {
+        "smsn": result["smsn"].hex(),
+        "ed25519_device_pubk": base64.standard_b64encode(result["ed25519_device_pubk"]).decode(
+            "utf-8"
+        ),
+        "p256r1_device_pubk": base64.standard_b64encode(result["p256r1_device_pubk"]).decode(
+            "utf-8"
+        ),
+        "ed25519_chain": base64.standard_b64encode(result["ed25519_chain"]).decode("utf-8"),
+        "p256r1_chain": base64.standard_b64encode(result["p256r1_chain"]).decode("utf-8"),
+    }
+    return encoded_result
+
+
+def sign_csr(
+    ed25519_csr: bytes,
+    p256r1_csr: bytes,
+    cert_store,
+    sn_len: int = SMSN_LEN,
+    stage: Optional[str] = None,
+    dsn: Optional[str] = None,
+    apid: Optional[str] = None,
+    device_type_id: Optional[str] = None,
+    validate_chain: bool = True,
+) -> dict:
+    """Sign device Certificate Signing Request (CSR) with product Device Attestation Key (DAK).
+
+    Args:
+        ed25519_csr (bytes): Certificate signing request for Ed25519 key.
+            Must be a valid decoded Sidewalk Ed25519 CSR.
+        p256r1_csr (bytes): Certificate signing request for P256R1 key.
+            Must be a valid decoded Sidewalk P256R1 CSR.
+        cert_store: Certificate store object for managing keys.
+        sn_len (int, optional): Length of serial number.
+            Defaults to SMSN_LEN.
+        stage (str, optional): Sidewalk Stage.
+            Valid values are ['PREPRODUCTION', 'PRODUCTION']. Defaults to None.
+        dsn (str, optional): Device Serial Number.
+             Defaults to None.
+        apid (str, optional): Advertised Product ID.
+            Must be a valid identifier. Defaults to None.
+        device_type_id (str, optional): Device type identifier.
+            Defaults to None.
+        validate_chain (bool, optional): Whether to validate certificate chain.
+            Defaults to True
+
+    Returns:
+        dict: Processed certificate information containing:
+            - smsn: Sidewalk Manufacturing Serial Number
+            - ed25519_device_pubk: Device ED25519 public key
+            - p256r1_device_pubk: Device P256R1 public key
+            - ed25519_chain: ED25519 certificate chain
+            - p256r1_chain: P256R1 certificate chain
+
+    Raises:
+        InvalidEddsaCSR: If ed25519 csr validation fails
+        InvalidEcdsaCSR: If p256r1 csr validation fails
+        ValueError: If data is missing from arguments or CSRs
+
+    Examples:
+        >>> ed_csr = base64.decode("MIIBgjCCASmgAwIBAgIJAL..."  #decoded csr
+        >>> result = function_name(
+        ...     ed25519_csr=ed_csr,
+        ...     p256r1_csr=p256_csr,
+        ...     cert_store=store,
+        ... )
+    """
+
+    if not ed25519_csr or not p256r1_csr or not cert_store:
         raise ValueError("Missing arguments")
 
     try:
