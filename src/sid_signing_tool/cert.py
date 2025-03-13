@@ -1,6 +1,7 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
+import base64
 import logging
 
 from cryptography.exceptions import InvalidSignature
@@ -96,6 +97,9 @@ class SidewalkCertChain(list):
 
     @classmethod
     def from_raw(cls, data, curve):
+        if isinstance(data, str):
+            data = base64.standard_b64decode(data)
+
         def split_bytes(data, len):
             return (data[:len], data[len:])
 

@@ -11,7 +11,7 @@ from sid_signing_tool import api
 from sid_signing_tool.cert import SidewalkCertChain
 from sid_signing_tool.certstore.mem import MemCertStore
 from sid_signing_tool.exceptions import InvalidCSRLength, InvalidEcdsaCSR, InvalidEddsaCSR
-from sid_signing_tool.types import CURVE, STAGE
+from sid_signing_tool.types import CATYPE, CURVE, ELEMENT, STAGE
 
 
 class TestApi(unittest.TestCase):
@@ -118,10 +118,10 @@ class TestApi(unittest.TestCase):
                 "NfWdJeUSu0HBNq11mg+SeQvu0afvutWs6CcFHOpIKirAbp3WGcsUqA8phqxWuqX5h4B5k+2iVBoO/GXLRS9+xCyGl11n6xD7uVtnb7Ct/Rp/U3wMdv9P3MptQryJp7Ocss1EL40ZY7k5vz5uZhdvIp4oGImIRmXICneC/NtuowbkfIOxB/+4p1UDTYAECyTsVEBR3BRGHvVCf65jkpgHvbbeQOgU2+Hgh6RzfCY/toRu+GvyDxqD8BZEHJgeGoxdgYGfoF8GD9xDeGC9Cp82fTN0uyMmKGygG3TCVphPiFHYTTk7Bc6mhbdhLnaWULUQf5TTNkKW5vGP/Z30f9WCO/KaIR9R4m/hdJBEOI9gjjJ3sRP/7SSbUenW2Qec/eYMTqL+VzHmrVql29Lz1rnkh4saQX+wA747+PoduIlcXVDHf0JArPPN0BVHwAt71dR+poTHo/m/9Gggp7atvdhB6+5s44X16JOEaw2VZc3l1W25iqsuZCm3Zx3WTTUmfjnmGBzG7IPbA+3+rN3mneSPtgGUaHi/74mPhEeC/zuQ2akBp9DWXLLvc/ngSGGgdg8OPDRMQY8v1TaNuoVVOh5rIZ8gssbdWwzdlAPHC2FvtITEHbzGmhrJmuTvF7OOulmdkQKjkVWZHnQP8OAXDIgmVZU6FwE/yIK0nobqcRNArbMjkaWVrGVyPynMCE64JsQfPQ1/DvHYA7nNsN5PMeAHbz2rElwdpICSwSdIAgPHA6fajBAWFHyjLAckPAQZ2yAL2pF8RsXgLutXAlRjrX97HqUcb8JJQOuv3nMQ789l9sVDmKFzYfJRl3i2mqrCfP80yNBgmMNvFuEM"
             ),
         )
-        ed25519_chain = SidewalkCertChain().from_raw(result["ed25519_chain"], CURVE.ED25519)
+        ed25519_chain = SidewalkCertChain.from_raw(result["ed25519_chain"], CURVE.ED25519)
         ed25519_chain.validate()
 
-        p256r1_chain = SidewalkCertChain().from_raw(result["p256r1_chain"], CURVE.P256R1)
+        p256r1_chain = SidewalkCertChain.from_raw(result["p256r1_chain"], CURVE.P256R1)
         p256r1_chain.validate()
 
     def test_sign_csr_3p_smsn_generated(self):
@@ -151,10 +151,32 @@ class TestApi(unittest.TestCase):
                 "IOs8K1dgNRlRNq0LkdA5A8eqmVpl+ZjKsLIVv1Mozca2+bpZaYHpxda/MOFCQeGnknQtJMuSwKRV1eMBLgVREwbZuvG9pB0LKCdCIvPvAovY/ooJOCYAusrBrEfiKevruMhZzT6hd3zTrjns7DEuu8uLVIVctX8vsRJM4eKcogXkfIOxB/+4p1UDTYAECyTsVEBR3BRGHvVCf65jkpgHvbbeQOgU2+Hgh6RzfCY/toRu+GvyDxqD8BZEHJgeGoxdgYGfoF8GD9xDeGC9Cp82fTN0uyMmKGygG3TCVphPiFHYTTk7Bc6mhbdhLnaWULUQf5TTNkKW5vGP/Z30f9WCO/KaIR9R4m/hdJBEOI9gjjJ3sRP/7SSbUenW2Qec/eYMTqL+VzHmrVql29Lz1rnkh4saQX+wA747+PoduIlcXVDHf0JArPPN0BVHwAt71dR+poTHo/m/9Gggp7atvdhB6+5s44X16JOEaw2VZc3l1W25iqsuZCm3Zx3WTTUmfjnmGBzG7IPbA+3+rN3mneSPtgGUaHi/74mPhEeC/zuQ2akBp9DWXLLvc/ngSGGgdg8OPDRMQY8v1TaNuoVVOh5rIZ8gssbdWwzdlAPHC2FvtITEHbzGmhrJmuTvF7OOulmdkQKjkVWZHnQP8OAXDIgmVZU6FwE/yIK0nobqcRNArbMjkaWVrGVyPynMCE64JsQfPQ1/DvHYA7nNsN5PMeAHbz2rElwdpICSwSdIAgPHA6fajBAWFHyjLAckPAQZ2yAL2pF8RsXgLutXAlRjrX97HqUcb8JJQOuv3nMQ789l9sVDmKFzYfJRl3i2mqrCfP80yNBgmMNvFuEM"
             ),
         )
-        ed25519_chain = SidewalkCertChain().from_raw(result["ed25519_chain"], CURVE.ED25519)
+        ed25519_chain = SidewalkCertChain.from_raw(result["ed25519_chain"], CURVE.ED25519)
         ed25519_chain.validate()
 
-        p256r1_chain = SidewalkCertChain().from_raw(result["p256r1_chain"], CURVE.P256R1)
+        p256r1_chain = SidewalkCertChain.from_raw(result["p256r1_chain"], CURVE.P256R1)
+        p256r1_chain.validate()
+
+    def test_sign_encoded_csr(self):
+        ed25519_csr = "wG6d1hnLFKgPKYasVrql+YeAeZPtolQaDvxly0UvfsQ19Z0l5RK7QcE2rXWaD5J5C+7Rp++61azoJwUc6kgqKvJ4BurrNPCBN54Dtu9P30TZNfnW2Qe58YUt7+FOFbzJSXz6WufPhVtUyBK7aQgopwYr7bEXENmM3wHrYQ+BlwM="
+        p256r1_csr = "vKhvmg56RD69wigKMEdCJDmFpLB7shHpizkBAEz+RnhbAtUBJI6Ih6NniS4q8uRM8bOUF6nxzvloB/Gi9fkRQjX1nSXlErtBwTatdZoPknkL7tGn77rVrOgnBRzqSCoqTsYY+6MTKU7SNUFljfUkP5smGTtgEhFP7cGwCyF5UT6tndjtHBxcOo1OL5ynSl6zw6xgVC2xZdajyct3xF2tNw=="
+        result = api.sign_encoded_csr(
+            ed25519_csr=ed25519_csr, p256r1_csr=p256r1_csr, cert_store=self.mem_store
+        )
+
+        self.assertEqual(
+            result["smsn"],
+            "35f59d25e512bb41c136ad759a0f92790beed1a7efbad5ace827051cea482a2a",
+        )
+
+        self.assertEqual(
+            result["ed25519_chain"],
+            "NfWdJeUSu0HBNq11mg+SeQvu0afvutWs6CcFHOpIKirAbp3WGcsUqA8phqxWuqX5h4B5k+2iVBoO/GXLRS9+xCyGl11n6xD7uVtnb7Ct/Rp/U3wMdv9P3MptQryJp7Ocss1EL40ZY7k5vz5uZhdvIp4oGImIRmXICneC/NtuowbkfIOxB/+4p1UDTYAECyTsVEBR3BRGHvVCf65jkpgHvbbeQOgU2+Hgh6RzfCY/toRu+GvyDxqD8BZEHJgeGoxdgYGfoF8GD9xDeGC9Cp82fTN0uyMmKGygG3TCVphPiFHYTTk7Bc6mhbdhLnaWULUQf5TTNkKW5vGP/Z30f9WCO/KaIR9R4m/hdJBEOI9gjjJ3sRP/7SSbUenW2Qec/eYMTqL+VzHmrVql29Lz1rnkh4saQX+wA747+PoduIlcXVDHf0JArPPN0BVHwAt71dR+poTHo/m/9Gggp7atvdhB6+5s44X16JOEaw2VZc3l1W25iqsuZCm3Zx3WTTUmfjnmGBzG7IPbA+3+rN3mneSPtgGUaHi/74mPhEeC/zuQ2akBp9DWXLLvc/ngSGGgdg8OPDRMQY8v1TaNuoVVOh5rIZ8gssbdWwzdlAPHC2FvtITEHbzGmhrJmuTvF7OOulmdkQKjkVWZHnQP8OAXDIgmVZU6FwE/yIK0nobqcRNArbMjkaWVrGVyPynMCE64JsQfPQ1/DvHYA7nNsN5PMeAHbz2rElwdpICSwSdIAgPHA6fajBAWFHyjLAckPAQZ2yAL2pF8RsXgLutXAlRjrX97HqUcb8JJQOuv3nMQ789l9sVDmKFzYfJRl3i2mqrCfP80yNBgmMNvFuEM",
+        )
+        ed25519_chain = SidewalkCertChain.from_raw(result["ed25519_chain"], CURVE.ED25519)
+        ed25519_chain.validate()
+
+        p256r1_chain = SidewalkCertChain.from_raw(result["p256r1_chain"], CURVE.P256R1)
         p256r1_chain.validate()
 
     def test_sign_csr_with_invalid_ones(self):
@@ -189,3 +211,48 @@ class TestApi(unittest.TestCase):
             )
         with self.assertRaises(ValueError):
             api.sign_csr(ed25519_csr=ed25519_csr, p256r1_csr=None, cert_store=self.mem_store)
+
+    def test_sign_encoded_csr_with_invalid_ones(self):
+        ed25519_csr = "wG6d1hnLFKgPKYasVrql+YeAeZPtolQaDvxly0UvfsQ19Z0l5RK7QcE2rXWaD5J5C+7Rp++61azoJwUc6kgqKvJ4BurrNPCBN54Dtu9P30TZNfnW2Qe58YUt7+FOFbzJSXz6WufPhVtUyBK7aQgopwYr7bEXENmM3wHrYQ+BlwM="
+        invalid_ed25519_csr = "wG6d1hnLFKgPKYasVrql+YeAeZPtolQaDvxly0UvfsQ19Z0l5RK7QcE2rXWaD5J5C+7Rp++61azoJwUc6kgqKvJ4BurrNPCBN54Dtu9P30TZNfnW2Qe58YUt7+FOFbzJSXz6WufPhVtUyBK7aQgopwYr7bEXENmM3wHrYQ+BlwM"
+        invalid_p256r1_csr = "vKhvmg56RD69wigKMEdCJDmFpLB7shHpizkBAEz+RnhbAtUBJI6Ih6NniS4q8uRM8bOUF6nxzvloB/Gi9fkRQjX1nSXlErtBwTatdZoPknkL7tGn77rVrOgnBRzqSCoqTsYY+6MTKU7SNUFljfUkP5smGTtgEhFP7cGwCyF5UT6tndjtHBxcOo1OL5ynSl6zw6xgVC2xZdajyct3xF2tNw="
+
+        with self.assertRaises(ValueError):
+            api.sign_encoded_csr(
+                ed25519_csr=invalid_ed25519_csr,
+                p256r1_csr=invalid_p256r1_csr,
+                cert_store=self.mem_store,
+            )
+
+        with self.assertRaises(ValueError):
+            api.sign_encoded_csr(
+                ed25519_csr=ed25519_csr,
+                p256r1_csr=invalid_p256r1_csr,
+                cert_store=self.mem_store,
+            )
+
+
+class TestApiConstant(unittest.TestCase):
+    def test_curve_constant(self):
+        self.assertEqual(CURVE.ED25519, "ed25519")
+        self.assertEqual(CURVE.P256R1, "p256r1")
+
+    def test_stage_constant(self):
+        self.assertEqual(STAGE.PROD, "prod")
+        self.assertEqual(STAGE.TEST, "test")
+        self.assertEqual(STAGE.PREPROD, "preprod")
+
+    def test_element_constant(self):
+        self.assertEqual(ELEMENT.PRIV, "private")
+        self.assertEqual(ELEMENT.PUBK, "pubkey")
+        self.assertEqual(ELEMENT.SIGNATURE, "signature")
+        self.assertEqual(ELEMENT.SERIAL, "serial")
+
+    def test_catype_constant(self):
+        self.assertEqual(CATYPE.AMZN, "amzn")
+        self.assertEqual(CATYPE.SIDEWALK, "sidewalk")
+        self.assertEqual(CATYPE.MAN, "man")
+        self.assertEqual(CATYPE.PROD, "prod")
+        self.assertEqual(CATYPE.DAK, "dak")
+        self.assertEqual(CATYPE.DEVICE, "device")
+        self.assertEqual(CATYPE.MODEL, "model")

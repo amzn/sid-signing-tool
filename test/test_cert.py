@@ -54,7 +54,7 @@ class TestSidewalkCert(unittest.TestCase):
             ),
         )
 
-    def test_create_certificate_with_invalide_length(self):
+    def test_create_certificate_with_invalid_length(self):
         with self.assertRaises(ValueError):
             SidewalkCert(
                 type=self.cert_amzn_ed25519.type,
@@ -128,3 +128,25 @@ class TestSidewalkCertChain(unittest.TestCase):
             self.assertEqual(chain_from_raw[i].serial, self.chain_p256r1[i].serial)
             self.assertEqual(chain_from_raw[i].pubk, self.chain_p256r1[i].pubk)
             self.assertEqual(chain_from_raw[i].signature, self.chain_p256r1[i].signature)
+
+    def test_chain_parse_b64(self):
+        chain_from_raw = SidewalkCertChain.from_raw(self.base64_chain_ed25519, CURVE.ED25519)
+        for i in range(len(chain_from_raw)):
+            self.assertEqual(chain_from_raw[i].type, self.chain_ed25519[i].type)
+            self.assertEqual(chain_from_raw[i].serial, self.chain_ed25519[i].serial)
+            self.assertEqual(chain_from_raw[i].pubk, self.chain_ed25519[i].pubk)
+            self.assertEqual(chain_from_raw[i].signature, self.chain_ed25519[i].signature)
+
+        chain_from_raw = SidewalkCertChain.from_raw(self.base64_chain_p256r1, CURVE.P256R1)
+        for i in range(len(chain_from_raw)):
+            self.assertEqual(chain_from_raw[i].type, self.chain_p256r1[i].type)
+            self.assertEqual(chain_from_raw[i].serial, self.chain_p256r1[i].serial)
+            self.assertEqual(chain_from_raw[i].pubk, self.chain_p256r1[i].pubk)
+            self.assertEqual(chain_from_raw[i].signature, self.chain_p256r1[i].signature)
+
+    def test_chain_parse_invalid_b64(self):
+        with self.assertRaises(ValueError):
+            SidewalkCertChain.from_raw(self.base64_chain_ed25519 + "A", CURVE.ED25519)
+
+        with self.assertRaises(ValueError):
+            SidewalkCertChain.from_raw(self.base64_chain_p256r1 + "A", CURVE.P256R1)
