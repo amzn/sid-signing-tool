@@ -133,10 +133,8 @@ def load_dummy_chains(file):
             "DEVICE": CATYPE.DEVICE,
         }
 
-        ca_list = ["AMZN", "SIDEWALK", "MAN", "PROD", "MODEL", "DAK", "DEVICE"]
-
         for curve, chain in certs.items():
-            for ca_str in ca_list:
+            for ca_str in type_mapping.keys():
                 if ca_str not in chain:
                     continue
                 elements = chain[ca_str]

@@ -28,14 +28,11 @@ except ValueError:
 
 i = 0
 for cert in reversed(sidewalk_chain):
-    print("[%d] %s:" % (i, cert.type.name))
+    print("[%d] %s:" % (i, cert.type.upper()))
     print("  Serial   : %s" % cert.serial.hex())
     print("  Pubk     : %s" % cert.pubk.hex())
     print("  Signature: %s" % cert.signature.hex())
     i = i + 1
 
-try:
-    sidewalk_chain.validate()
-    print("Pass: the certificate chain of %s is valid" % sidewalk_chain[0].curve.name)
-except:
-    pass
+sidewalk_chain.validate()
+print("Pass: the certificate chain of %s is valid" % sidewalk_chain[0].curve.upper())
